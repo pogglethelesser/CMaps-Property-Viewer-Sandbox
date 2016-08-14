@@ -28,7 +28,7 @@
         /* Executes the call to the search service to get suggestions for the type ahead 
         -------------------------------------------------------------------------------- */
         $scope.search = function (val) {
-            $log.debug($scope.title, 'Search: Start', val);
+            //$log.debug($scope.title, 'Search: Start', val);
 
             $scope.searching = true;
             var url = $scope.url + '?' + $httpParamSerializer({
@@ -51,6 +51,14 @@
                 $scope.searching = false;
             });
 
+        };
+
+        $scope.selectFeature = function (val) {
+            if (arguments.length) {
+                //_selected = value;
+            } else {
+                //return _selected;
+            }
         };
 
         function activate() {

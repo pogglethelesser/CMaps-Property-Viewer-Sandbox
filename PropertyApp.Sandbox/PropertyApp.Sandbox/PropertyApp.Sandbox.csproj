@@ -75,19 +75,29 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\app-controller.js" />
     <Content Include="App\app.core-events.js" />
-    <Content Include="App\app.core-searchSettings.js" />
+    <Content Include="App\portal\app.core-portalSettings.js" />
+    <Content Include="App\portal\portal-controller.js" />
+    <Content Include="App\portal\portal-query-factory.js" />
+    <Content Include="App\searchbox\app.core-searchSettings.js" />
     <Content Include="App\app.core.module.js" />
     <Content Include="App\app.module.js" />
-    <Content Include="App\map-controller.js" />
-    <Content Include="App\searchbox-controller.js" />
+    <Content Include="App\map\map-controller.js" />
+    <Content Include="App\map\map.html" />
+    <Content Include="App\searchbox\itemTpl.html" />
+    <Content Include="App\searchbox\searchbox-controller.js" />
+    <Content Include="App\searchbox\searchbox.html" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="mapsearch.html" />
+    <Content Include="portallookup.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />

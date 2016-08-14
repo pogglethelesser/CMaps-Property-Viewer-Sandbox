@@ -1,80 +1,36 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>Property Viewer Sandbox</title>
+    <meta charset="utf-8" />
 
-    <!--- CSS references -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/Content/font-awesome.min.css">
-    <link rel="stylesheet" href="/Content/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="/Content/site.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
 
-    <!-- load Esri CSS -->
-    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/4.0/esri/css/main.css">
-    <style type="text/css">
-        .esri-view {
-            height: 500px;
-        }
-    </style>
 </head>
-<body ng-app="app">
+<body>
     <div class="container-fluid">
         <h2>Property Viewer Sandbox</h2>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="input-group" ng-controller="SearchboxController">
-                    <input id="address-search" type="text" ng-model="query" placeholder="Locality, Street Address, Street Name, Legal Description"
-                           uib-typeahead="result as result.label for result in search($viewValue)"
-                           typeahead-loading="searching" typeahead-min-length="4"
-                           class="form-control input-block-level" typeahead-template-url="itemTpl.html">
-                    <div class="input-group-addon">
-                        <i ng-show="searching" class="fa fa-spinner fa-spin"></i>
-                        <i ng-hide="searching" class="fa fa-search"></i>
-                    </div>
-                </div>
+                <h3>Tests and Methods</h3>
             </div>
         </div>
 
-        <div class="row padded-top" ng-controller="MapController as mc">
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Context Map</h3>
-                    </div>
-                    <div class="panel-body no-padding">
-                        <esri-map-view map="mc.map" view-options="{scale: 250000, center: [172.640, -43.503]}" on-create="mc.onViewCreated">
-                        </esri-map-view>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="mapsearch.html" target="_self">Map with Location Search</a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="portallookup.html" target="_self">Portal Lookup Methods</a>
             </div>
         </div>
-
     </div>
 
     <!-- JS Files -->
-    <script src="//js.arcgis.com/4.0/"></script>
-    <script src="Scripts/angular.js"></script>
-    <script src="Scripts/angular-animate.js"></script>
-    <script src="Scripts/angular-route.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
-    <script src="//npmcdn.com/angular-esri-map@2"></script>
-    <script src="App/app.module.js"></script>
-    <script src="App/app.core.module.js"></script>
-    <script src="App/app.core-searchSettings.js"></script>
-    <script src="App/app.core-events.js"></script>
-    <script src="App/searchbox-controller.js"></script>
-    <script src="App/map-controller.js"></script>
-
-    <script type="text/ng-template" id="itemTpl.html">
-        <a tabindex="-1">
-            <i ng-class="'acta acta-'+match.model.value.searchclass"></i>&nbsp;
-            <span class="acta-label" ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
-            <p class="acta-description" ng-bind-html="match.value.keydescription"></p>
-        </a>
-    </script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
 </body>
 </html>
