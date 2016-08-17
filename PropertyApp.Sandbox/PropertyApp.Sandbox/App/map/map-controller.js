@@ -30,8 +30,19 @@
                         });
                         vm.mapView.center = pt;
 
-                        //vm.mapView.center.latitude = data.latitude;
-                        //vm.mapView.center.longitude = data.longitude;
+                        // Update the map sclae based on the type of location passed in - not if user is currently zoomed in beyond the threshold that scale is maintained
+                        switch (data.locationClass) {
+                            case 'PAR':
+                            case 'VAL':
+                                if (vm.mapView.scale > 10000)
+                                    vm.mapView.scale = 10000;
+                                break;
+
+                            default:
+                                if (vm.mapView.scale > 25000)
+                                    vm.mapView.scale = 25000;
+                                break;
+                        }
                     }
                 });
             });
