@@ -92,6 +92,7 @@
     <Content Include="App\searchbox\searchbox.html" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\locationPin.png" />
     <Content Include="Content\site.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
