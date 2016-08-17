@@ -31,12 +31,15 @@
             //$log.debug($scope.title, 'Search: Start', val);
 
             $scope.searching = true;
+
+            /*
             var url = $scope.url + '?' + $httpParamSerializer({
                 searchclass: $scope.filter,
                 searchlimit: $scope.limit,
                 searchterm: val,
                 searchgeotag:  $scope.geotagfilter,
-                f: 'json'
+                f: 'json',
+                callback: 'JSON_CALLBACK'
             });
 
             return $http.get($scope.proxyurl + '?' + url).then(function (res) {
@@ -51,6 +54,31 @@
                 $scope.searching = false;
             });
 
+            */
+
+            return $http.jsonp($scope.url,
+                {
+                    method: 'POST',
+                    params: {
+                        searchclass: $scope.filter,
+                        searchlimit: $scope.limit,
+                        searchterm: val,
+                        searchgeotag: $scope.geotagfilter,
+                        f: 'pjson',
+                        callback: 'JSON_CALLBACK'
+                    },
+                    responseType: 'json'
+                }).then(function (res) {
+                var results = [];
+                angular.forEach(res.data.searchResults, function (item) {
+                    results.push(item);
+                });
+                $scope.searching = false;
+                return results;
+            }, function (error) {
+                alert(error);
+                $scope.searching = false;
+            });
         };
 
         $scope.selectFeature = function (val) {
