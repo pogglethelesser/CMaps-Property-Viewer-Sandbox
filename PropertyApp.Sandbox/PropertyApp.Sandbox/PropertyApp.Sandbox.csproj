@@ -77,6 +77,8 @@
   <ItemGroup>
     <Content Include="App\app-controller.js" />
     <Content Include="App\app.core-events.js" />
+    <Content Include="App\layer\layer-controller.js" />
+    <Content Include="App\layer\layer-query-factory.js" />
     <Content Include="App\portal\app.core-portalSettings.js" />
     <Content Include="App\portal\portal-controller.js" />
     <Content Include="App\portal\portal-query-factory.js" />
@@ -96,6 +98,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="layerqueries.html" />
     <Content Include="mapsearch.html" />
     <Content Include="portallookup.html" />
     <Content Include="Scripts\angular-animate.js" />
