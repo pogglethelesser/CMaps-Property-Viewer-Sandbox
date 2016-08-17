@@ -16,6 +16,7 @@
         $scope.results = undefined;
         $scope.shape = '';
         $scope.shapetype = 'esriGeometryPoint';
+        $scope.distance = 0;
 
         $scope.queryFeatures = function () {
             var valid = ($scope.where !== '' || $scope.shape !== '') && $scope.url !== '';
@@ -23,7 +24,7 @@
             if (valid) {
                 $scope.results = undefined;
 
-                layerQueryService.queryFeatures($scope.url, $scope.where !== '' ? $scope.shape : null, $scope.shape !== '' ? $scope.shape : null, $scope.shapetype, $scope.outFields, true).then(
+                layerQueryService.queryFeatures($scope.url, $scope.where !== '' ? $scope.where : null, $scope.shape !== '' ? $scope.shape : null, $scope.shapetype, $scope.outFields, true, null, $scope.distance).then(
                     function (res) {
                         $scope.results = res;
                     },

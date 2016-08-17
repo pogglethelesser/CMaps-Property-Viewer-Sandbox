@@ -63,6 +63,11 @@
 
                         queryParams.geometry = geometry;
                         queryParams.geometryType = shapetype;
+
+                        // Apply buffer distance if applicable 
+                        if (distance !== undefined && angular.isNumber(distance) && distance !== 0) {
+                            queryParams.distance = distance;
+                        }
                     }
 
                     if (outFields !== undefined) {
