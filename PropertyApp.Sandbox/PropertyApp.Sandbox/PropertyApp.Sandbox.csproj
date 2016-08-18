@@ -77,6 +77,8 @@
   <ItemGroup>
     <Content Include="App\app-controller.js" />
     <Content Include="App\app.core-events.js" />
+    <Content Include="App\coreproperty\coreproperty-controller.js" />
+    <Content Include="App\coreproperty\results.html" />
     <Content Include="App\layer\layer-controller.js" />
     <Content Include="App\layer\layer-query-factory.js" />
     <Content Include="App\portal\app.core-portalSettings.js" />

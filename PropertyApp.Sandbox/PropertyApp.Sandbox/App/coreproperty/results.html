@@ -1,0 +1,15 @@
+﻿<div ng-show="results !== undefined && searching !== true">
+    <p>{{location}}</p>
+
+    <div ng-show="results.features.length > 0">
+        <p>Legal Description: {{results.features[0].attributes.Appellation}}</p>
+        <p>Titles: {{results.features[0].attributes.Titles }}</p>
+        <p>Area: {{results.features[0].attributes.Calc_Area/10000 | number: 3 }} ha</p>
+        <p>Local Council: {{results.features[0].attributes.Territorial_Authority}}</p>
+    </div>
+
+</div>
+
+<div ng-show="searching">
+    <i class="fa fa-4x fa-spin fa-circle-o-notch"></i>
+</div>

@@ -54,6 +54,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Core Property Info</h3>
+                    </div>
+                    <div class="panel-body no-padding">
+                        <div ng-controller="CorePropertyController as pc" ng-include="'app/coreproperty/results.html'"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -72,11 +83,17 @@
     <script src="App/app.core-events.js"></script>
     <script src="App/app-controller.js"></script>
 
+    <!-- Service Tools -->
+    <script src="App/layer/layer-query-factory.js"></script>
+
     <!-- Searchbox -->
     <script src="App/searchbox/app.core-searchSettings.js"></script>
     <script src="App/searchbox/searchbox-controller.js"></script>
 
     <!-- map -->
     <script src="App/map/map-controller.js"></script>
+
+    <!-- Core Property -->
+    <script src="App/coreproperty/coreproperty-controller.js"></script>
 </body>
 </html>
