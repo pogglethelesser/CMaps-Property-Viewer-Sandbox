@@ -5,7 +5,7 @@
         .module('app')
         .controller('CorePropertyController', CorePropertyController);
 
-    CorePropertyController.$inject = ['$scope', '$rootScope', '$log', 'searchSettings', 'events', 'layerQueryService','esriLoader'];
+    CorePropertyController.$inject = ['$scope', '$rootScope', '$log', 'searchSettings', 'events', 'layerQueryService', 'esriLoader'];
 
     function CorePropertyController($scope, $rootScope, $log, searchSettings, events, layerQueryService, esriLoader) {
         $scope.title = 'CorePropertyController';
@@ -20,58 +20,61 @@
             where: ''
         };
 
+        // Holder for the results
+        $scope.results = undefined;
+
         // Query properties
+        esriLoader.require(
+                    [
+                        'esri/geometry/Point',
+                        'esri/Graphic',
+                        'esri/layers/GraphicsLayer',
+                        'esri/symbols/Symbol'
+                    ],
+            function (Point, Graphic, GraphicsLayer, Symbol) {
 
-        //activate();
+                // Listener for location change event
+                $rootScope.$on(events.CHANGE_LOCATION, function (evt, data) {
+                    if (data !== undefined) {
+                        var pt = new Point({
+                            x: data.longitude,
+                            y: data.latitude,
+                            spatialReference: 4326
+                        });
 
-        //function activate() {
-            esriLoader.require(
-                        [
-                            'esri/geometry/Point',
-                            'esri/Graphic',
-                            'esri/layers/GraphicsLayer',
-                            'esri/symbols/Symbol'
-                        ],
-                function (Point, Graphic, GraphicsLayer, Symbol) {
+                        // Update the map scale based on the type of location passed in - not if user is currently zoomed in beyond the threshold that scale is maintained
+                        switch (data.locationClass) {
+                            case 'PAR':
+                            case 'VAL':
+                                // Query the property layer for details
+                                $scope.results = undefined;
+                                $scope.searching = true;
+                                layerQueryService.queryFeatures($scope.corePropertySettings.url, $scope.corePropertySettings.where !== '' ? $scope.corePropertySettings.where : null, pt, 'esriGeometryPoint', $scope.corePropertySettings.outFields, true).then(
+                                    function (res) {
+                                        $scope.results = res;
 
-                    // Listener for location change event
-                    $rootScope.$on(events.CHANGE_LOCATION, function (evt, data) {
-                        if (data !== undefined) {
-                            var pt = new Point({
-                                x: data.longitude,
-                                y: data.latitude,
-                                spatialReference: 4326
-                            });
+                                        // Raise the update event
+                                        $rootScope.$emit(events.CORE_RECORD_CHANGE, res.features[0]);
 
-                            // Update the map scale based on the type of location passed in - not if user is currently zoomed in beyond the threshold that scale is maintained
-                            switch (data.locationClass) {
-                                case 'PAR':
-                                case 'VAL':
-                                    // Query the property layer for details
-                                    $scope.results = undefined;
-                                    $scope.searching = true;
-                                    layerQueryService.queryFeatures($scope.corePropertySettings.url, $scope.corePropertySettings.where !== '' ? $scope.corePropertySettings.where : null, pt, 'esriGeometryPoint', $scope.corePropertySettings.outFields, true).then(
-                                        function (res) {
-                                            $scope.results = res;
-                                            $scope.searching = false;
-                                        },
-                                        function (error) {
-                                            alert(error);
-                                            $scope.searching = false;
-                                        }
-                                    );
+                                        // finish searching
+                                        $scope.searching = false;
+                                    },
+                                    function (error) {
+                                        alert(error);
+                                        $scope.searching = false;
+                                    }
+                                );
 
-                                    break;
+                                break;
 
-                                default:
-                                    // Do nothing
-                                    break;
-                            }
+                            default:
+                                // Do nothing
+                                break;
                         }
-                    });
-                }
-            );
-        //}
+                    }
+                });
+            }
+        );
     }
 
 })();

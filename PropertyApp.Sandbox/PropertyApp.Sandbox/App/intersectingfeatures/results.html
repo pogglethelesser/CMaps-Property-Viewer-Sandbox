@@ -1,0 +1,17 @@
+﻿<div ng-show="searching !== true || !loaded" >
+
+    <!--<pre>Urban On Property: {{urban_onproperty_map | json}}</pre>-->
+    <div ng-repeat="dataset in urban_onproperty_map">
+        <h5>{{dataset.title}}</h5>
+        <div ng-repeat="feature in dataset.currentResult.features">
+            <content-item content="feature.attributes" template="dataset.displayTemplate"></content-item>
+            
+            <!--<p>{{dataset.displayTemplate}}</p>
+            <p>{{feature.attributes[0]}}</p>-->
+        </div>
+    </div>
+</div>
+
+<div ng-show="searching || !loaded">
+    <i class="fa fa-4x fa-spin fa-circle-o-notch"></i>
+</div>
