@@ -21,6 +21,7 @@
                 'esri/geometry/Point',
                 'esri/Graphic',
                 'esri/layers/GraphicsLayer',
+                'esri/layers/TileLayer',
                 'esri/symbols/Symbol',
                 'esri/symbols/PictureMarkerSymbol',
                 'esri/symbols/SimpleFillSymbol',
@@ -28,11 +29,24 @@
                 'esri/symbols/support/jsonUtils'
             ],
 
-            function (Map, Point, Graphic, GraphicsLayer, Symbol, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, symbolJsonUtils) {
+            function (Map, Point, Graphic, GraphicsLayer, TileLayer, Symbol, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, symbolJsonUtils) {
                 // Create the map - use a basic map at this stage (could be swapped out at some point to use a webmap from ArcGIS.com)
+                //vm.map = new Map({
+                //    basemap: 'streets'
+                //});
+
+
+                 // THIS WILL CREATE A MAP USING ECAN LAYERS RATHER THAN ESRI BASEMAPS - NOTE CHANGE SEARCH COMPONENT CHNAGED TO USE X and Y values intead of lat and long ones
+                var aeriallayer = new TileLayer({
+                    url: "http://gis.ecan.govt.nz/arcgis/rest/services/Imagery/MapServer"
+                  });
+
                 vm.map = new Map({
-                    basemap: 'streets'
+                    layers: [aeriallayer]
                 });
+
+                
+
 
                 // Create the location point marker symbol
                 vm.locationMarkerSymbol = new PictureMarkerSymbol({
@@ -63,11 +77,20 @@
                 // Listener for location change event
                 $rootScope.$on(events.CHANGE_LOCATION, function (evt, data) {
                     if (data !== undefined) {
+                        /* CHNAGE TO USE WHEN USING ESRI BASEMAPS 
                         var pt = new Point({
                             x: data.longitude,
                             y: data.latitude,
                             spatialReference: 4326
                         });
+                        */
+
+                        var pt = new Point({
+                            x: data.x,
+                            y: data.y,
+                            spatialReference: 2193
+                        });
+
                         vm.mapView.center = pt;
 
                         // Update the map sclae based on the type of location passed in - not if user is currently zoomed in beyond the threshold that scale is maintained

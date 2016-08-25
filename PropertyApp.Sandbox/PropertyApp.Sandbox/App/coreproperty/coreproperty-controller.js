@@ -36,11 +36,22 @@
                 // Listener for location change event
                 $rootScope.$on(events.CHANGE_LOCATION, function (evt, data) {
                     if (data !== undefined) {
+
+                        // USE THIS WHEN USING ECAN BASEMAPS
+                        var pt = new Point({
+                            x: data.x,
+                            y: data.y,
+                            spatialReference: 2193
+                        });
+
+                        /*  USE THIS WHEN USING ESRI BASEMAPS
                         var pt = new Point({
                             x: data.longitude,
                             y: data.latitude,
                             spatialReference: 4326
                         });
+                        */
+
 
                         // Update the map scale based on the type of location passed in - not if user is currently zoomed in beyond the threshold that scale is maintained
                         switch (data.locationClass) {

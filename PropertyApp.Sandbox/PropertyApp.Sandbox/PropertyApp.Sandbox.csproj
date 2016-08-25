@@ -80,6 +80,7 @@
     <Content Include="App\app.core-landSearchSettings.js" />
     <Content Include="App\coreproperty\coreproperty-controller.js" />
     <Content Include="App\coreproperty\results.html" />
+    <Content Include="App\geometry\geometry-task-factory.js" />
     <Content Include="App\intersectingfeatures\content-item-directive.js" />
     <Content Include="App\intersectingfeatures\dataset-factory.js" />
     <Content Include="App\intersectingfeatures\intersecting-features-controller.js" />

@@ -72,8 +72,11 @@
                 </form>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <pre ng-show="results !== undefined">Query Results: {{results | json}}</pre>
+            </div>
+            <div class="col-md-6">
+                <pre ng-show="bufferShape !== undefined">Buffer Shape: {{bufferShape | json}}</pre>
             </div>
         </div>
 
@@ -94,8 +97,9 @@
     <script src="App/app.core-events.js"></script>
     <script src="App/app-controller.js"></script>
 
-    <!-- Query -->
+    <!-- Query and Buffer-->
     <script src="App/layer/layer-query-factory.js"></script>
+    <script src="App/geometry/geometry-task-factory.js"></script>
     <script src="App/layer/layer-controller.js"></script>
 
 </body>
