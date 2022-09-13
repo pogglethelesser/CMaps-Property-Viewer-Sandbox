@@ -15,7 +15,7 @@
 
         // Core Property Settings
         $scope.corePropertySettings = {
-            url: 'http://gis.ecan.govt.nz/arcgis/rest/services/Public/Region_Base/MapServer/6',
+            url: 'https://gis.ecan.govt.nz/arcgis/rest/services/Region_Base/MapServer/6',
             outFields: '*',
             where: ''
         };

@@ -38,7 +38,7 @@
 
                  // THIS WILL CREATE A MAP USING ECAN LAYERS RATHER THAN ESRI BASEMAPS - NOTE CHANGE SEARCH COMPONENT CHNAGED TO USE X and Y values intead of lat and long ones
                 var aeriallayer = new TileLayer({
-                    url: "http://gis.ecan.govt.nz/arcgis/rest/services/Imagery/MapServer"
+                    url: "https://gis.ecan.govt.nz/arcgis/rest/services/Imagery/MapServer"
                   });
 
                 vm.map = new Map({

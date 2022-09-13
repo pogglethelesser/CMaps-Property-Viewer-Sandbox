@@ -32,7 +32,7 @@
                     service._prepareGeometryTask = function () {
                         // Need to replace this with settings the defeault geometry service in the config section
 
-                        service.geometryService =  new GeometryService({ url: "http://gis.ecan.govt.nz/arcgis/rest/services/Utilities/Geometry/GeometryServer" });
+                        service.geometryService =  new GeometryService({ url: "https://gis.ecan.govt.nz/arcgis/rest/services/Utilities/Geometry/GeometryServer" });
                     };
 
                     /// Prepare a new bufferRequest

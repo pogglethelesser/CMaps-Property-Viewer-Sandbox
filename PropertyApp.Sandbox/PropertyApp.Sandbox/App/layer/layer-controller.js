@@ -10,7 +10,7 @@
     function LayerController($scope, layerQueryService, geometryService) {
         $scope.title = 'LayerController';
 
-        $scope.url = 'http://gis.ecan.govt.nz/arcgis/rest/services/Public/Region_Base/MapServer/6';
+        $scope.url = 'https://gis.ecan.govt.nz/arcgis/rest/services/Public/Region_Base/MapServer/6';
         $scope.outFields = '*';
         $scope.where = 'PAR_ID = 3350561';
         $scope.results = undefined;

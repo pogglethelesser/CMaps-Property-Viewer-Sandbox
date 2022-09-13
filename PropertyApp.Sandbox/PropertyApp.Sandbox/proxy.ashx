@@ -57,7 +57,7 @@ public class proxy : IHttpHandler {
         }
     }
 
-    private static string PROXY_REFERER = "http://localhost/proxy/proxy.ashx";
+    private static string PROXY_REFERER = "https://localhost/proxy/proxy.ashx";
     private static string DEFAULT_OAUTH = "https://www.arcgis.com/sharing/oauth2/";
     private static int CLEAN_RATEMAP_AFTER = 10000; //clean the rateMap every xxxx requests
 

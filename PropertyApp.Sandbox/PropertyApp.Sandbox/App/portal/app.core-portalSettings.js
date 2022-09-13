@@ -4,6 +4,6 @@
     angular
         .module('app.core')
         .constant('portalSettings', {
-            BASE_PORTAL_URL: 'http://www.arcgis.com/sharing/rest/'
+            BASE_PORTAL_URL: 'https://www.arcgis.com/sharing/rest/'
         });
 })();
